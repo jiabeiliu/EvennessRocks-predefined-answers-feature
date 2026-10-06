@@ -4,6 +4,8 @@ A Chrome Manifest V3 extension for keeping reusable answers in your browser and 
 
 ## Demo walkthrough
 
+For a safe local practice page, start a static server in the repository folder with `python3 -m http.server 8765 --directory demo` and open `http://127.0.0.1:8765/try-it.html`. The page contains only a draft text field and never sends a message. Load the extension in Chrome first as described below.
+
 1. Open the extension's **Options** page and save an answer with a short title and body, for example `Scheduling follow-up` → `Thank you for reaching out. I can follow up tomorrow.`
 2. Open an ordinary webpage with a text input, textarea, or contenteditable editor. Click the extension's toolbar icon.
 3. Click the destination field, search for the answer in the panel, then click **Insert**. Review the inserted text before submitting the page.
