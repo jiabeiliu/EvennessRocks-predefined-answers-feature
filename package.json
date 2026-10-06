@@ -1,0 +1,11 @@
+{
+  "name": "evenness-predefined-answers",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free Chrome Manifest V3 extension for local reusable answers",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node --check shared.js && node --check options.js && node --check content.js && node --check background.js && node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

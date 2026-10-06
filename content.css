@@ -1,0 +1,22 @@
+#evenness-answers-panel { box-sizing: border-box; position: fixed; z-index: 2147483647; right: 18px; bottom: 18px; width: min(360px, calc(100vw - 36px)); max-height: min(620px, calc(100vh - 36px)); overflow: auto; border: 1px solid #dce3f1; border-radius: 16px; background: #fff; color: #17243a; box-shadow: 0 16px 52px rgba(20, 33, 69, .24); padding: 16px; font: 14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; text-align: left; }
+#evenness-answers-panel[hidden] { display: none !important; }
+#evenness-answers-panel * { box-sizing: border-box; }
+#evenness-answers-panel .ea-head { display: flex; justify-content: space-between; align-items: start; gap: 8px; }
+#evenness-answers-panel h2 { margin: 0; font: 700 18px/1.2 system-ui, sans-serif; color: #17243a; }
+#evenness-answers-panel .ea-subtitle { margin: 5px 0 12px; color: #58657e; font-size: 12px; }
+#evenness-answers-panel input, #evenness-answers-panel select { width: 100%; border: 1px solid #c9d3e4; border-radius: 8px; padding: 9px; color: #17243a; background: white; font: inherit; }
+#evenness-answers-panel input:focus, #evenness-answers-panel select:focus, #evenness-answers-panel button:focus-visible { outline: 3px solid #aebaff; outline-offset: 2px; }
+#evenness-answers-panel button { border: 0; border-radius: 8px; padding: 7px 10px; background: #eaf0fb; color: #263a69; font: 600 12px system-ui, sans-serif; cursor: pointer; }
+#evenness-answers-panel button:hover { background: #dbe5fb; }
+#evenness-answers-panel .ea-close { flex: none; font-size: 17px; line-height: 1; padding: 5px 8px; }
+#evenness-answers-panel .ea-list { margin: 12px 0; max-height: 310px; overflow: auto; }
+#evenness-answers-panel .ea-card { padding: 11px 0; border-top: 1px solid #e7ebf4; }
+#evenness-answers-panel .ea-title { margin: 0 0 5px; font-weight: 700; color: #17243a; }
+#evenness-answers-panel .ea-preview { margin: 0 0 8px; max-height: 56px; overflow: hidden; white-space: pre-wrap; overflow-wrap: anywhere; color: #56647c; font-size: 12px; }
+#evenness-answers-panel .ea-card-actions { display: flex; gap: 7px; }
+#evenness-answers-panel .ea-card-actions .ea-insert { background: #4058c9; color: white; }
+#evenness-answers-panel .ea-card-actions .ea-insert:hover { background: #3046aa; }
+#evenness-answers-panel .ea-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid #e7ebf4; padding-top: 10px; }
+#evenness-answers-panel .ea-footer select { width: auto; max-width: 145px; font-size: 12px; }
+#evenness-answers-panel .ea-status { margin: 10px 0 0; min-height: 18px; color: #225b44; font-size: 12px; }
+#evenness-answers-panel .ea-status[data-error="true"] { color: #a02f43; }

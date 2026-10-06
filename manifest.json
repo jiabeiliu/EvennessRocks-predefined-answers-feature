@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Evenness Predefined Answers",
+  "version": "1.0.0",
+  "description": "Save reusable answers locally and insert them into the current page's text field.",
+  "action": { "default_title": "Open Predefined Answers" },
+  "options_page": "options.html",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://api.voicerss.org/*"],
+  "background": { "service_worker": "background.js" },
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "128": "images/icon128.png"
+  }
+}
