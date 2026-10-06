@@ -6,6 +6,10 @@ A Chrome Manifest V3 extension for keeping reusable answers in your browser and 
 
 For a safe local practice page, start a static server in the repository folder with `python3 -m http.server 8765 --directory demo` and open `http://127.0.0.1:8765/try-it.html`. The page contains only a draft text field and never sends a message. Load the extension in Chrome first as described below.
 
+![Real Chrome demo: a saved answer inserted into the local practice page](docs/demo-insert.png)
+
+The screenshot above is from an actual Chrome run on October 6, 2026: a fictional answer was saved in Options, selected from the extension panel, and inserted into the local practice page. The confirmation says to review the text before sending; no message was submitted. It is not a mockup or a Chrome Web Store listing.
+
 1. Open the extension's **Options** page and save an answer with a short title and body, for example `Scheduling follow-up` → `Thank you for reaching out. I can follow up tomorrow.`
 2. Open an ordinary webpage with a text input, textarea, or contenteditable editor. Click the extension's toolbar icon.
 3. Click the destination field, search for the answer in the panel, then click **Insert**. Review the inserted text before submitting the page.
@@ -32,4 +36,4 @@ The **Speak** button is optional. If you add a VoiceRSS key in Options and click
 
 The library supports up to 100 answers, each with an 80-character title and 4,000-character body. This implementation adapts the interaction idea and optional TTS path from a local `predefined-answers-main` prototype, but replaces its always-on page overlay with on-demand injection and adds answer management, validation, tests, and corrected Manifest V3 asset/script references. This repository does not claim the underlying product or earlier prototype as solely authored here.
 
-Automated tests cover data validation, CRUD, search, limits, manifest paths, and absence of embedded keys. They do **not** replace manual Chrome checks on representative websites or a Chrome Web Store review.
+Automated tests cover data validation, CRUD, search, limits, manifest paths, the Options-page routing fix, and absence of embedded keys. A manual Chrome smoke test passed on the included practice page. That single test does **not** establish compatibility with every rich-text editor or replace a Chrome Web Store review.
