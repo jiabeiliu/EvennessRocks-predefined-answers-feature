@@ -2,6 +2,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const test = require("node:test");
+const vm = require("node:vm");
 
 const root = path.resolve(__dirname, "..");
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
@@ -26,4 +27,28 @@ test("no API credentials are embedded in the packaged source", () => {
     const source = fs.readFileSync(path.join(root, file), "utf8");
     assert.doesNotMatch(source, /AIza[0-9A-Za-z_-]{30,}|sk-[0-9A-Za-z_-]{20,}/);
   }
+});
+
+test("Manage answers requests options through the background worker", async () => {
+  const content = fs.readFileSync(path.join(root, "content.js"), "utf8");
+  assert.match(content, /sendMessage\(\{ type: "open-options" \}\)/);
+  assert.doesNotMatch(content, /chrome\.runtime\.openOptionsPage\(/);
+
+  let listener;
+  let opened = 0;
+  const background = fs.readFileSync(path.join(root, "background.js"), "utf8");
+  vm.runInNewContext(background, {
+    chrome: {
+      action: { onClicked: { addListener() {} } },
+      runtime: {
+        onMessage: { addListener(callback) { listener = callback; } },
+        openOptionsPage: async () => { opened += 1; }
+      }
+    }
+  });
+  const response = await new Promise((resolve) => {
+    assert.equal(listener({ type: "open-options" }, {}, resolve), true);
+  });
+  assert.equal(opened, 1);
+  assert.equal(response.ok, true);
 });

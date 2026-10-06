@@ -39,6 +39,12 @@ async function speakWithVoiceRSS(text, lang) {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, respond) => {
+  if (message?.type === "open-options") {
+    chrome.runtime.openOptionsPage()
+      .then(() => respond({ ok: true }))
+      .catch((error) => respond({ ok: false, error: error.message || "Could not open settings." }));
+    return true;
+  }
   if (message?.type !== "speak-answer") return false;
   speakWithVoiceRSS(message.text, message.lang)
     .then((audio) => respond({ ok: true, ...audio }))

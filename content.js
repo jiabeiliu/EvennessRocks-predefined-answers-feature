@@ -152,7 +152,14 @@
   }
   search.addEventListener("input", render);
   panel.querySelector(".ea-close").addEventListener("click", () => { panel.hidden = true; });
-  panel.querySelector(".ea-settings").addEventListener("click", () => chrome.runtime.openOptionsPage());
+  panel.querySelector(".ea-settings").addEventListener("click", async () => {
+    try {
+      const result = await chrome.runtime.sendMessage({ type: "open-options" });
+      if (!result?.ok) throw new Error(result?.error || "Could not open settings.");
+    } catch (error) {
+      setStatus(error.message || "Could not open settings.", true);
+    }
+  });
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area === "local" && changes.presets) {
       presets = api.normalizePresets(changes.presets.newValue);
